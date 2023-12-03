@@ -24,7 +24,7 @@ pipeline {
 
     stage('Docker Build and Push'){
       steps {
-        docker.withRegistry('docker.io', 'my-dockerhub-secret-token'){
+        withDockerRegistry([credentialsId: "my-dockerhub-secret-token", url: ""]){
           sh 'printenv'
           sh 'docker build -t muzakh/numeric-app:""$GIT_COMMIT"" .'
           sh 'docker push muzakh/numeric-app:""$GIT_COMMIT""'
