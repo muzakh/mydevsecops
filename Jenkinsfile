@@ -34,7 +34,7 @@ pipeline {
 
     stage('K8s Deployment - Dev'){
       steps {
-        sh "sed -i 's#replace#muzakh/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
+        sh "sed -i .bak 's#replace#muzakh/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
         sh "kubectl apply -f k8s_deployment_service.yaml"
       }
     }
