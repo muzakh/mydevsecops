@@ -1,3 +1,5 @@
 fileignoreconfig:
 - filename: Jenkinsfile
   allowed_patterns: ['projectKey=numeric-application']
+
+- .talismanrc
