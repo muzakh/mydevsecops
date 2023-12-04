@@ -1,1 +1,4 @@
-allowed_patterns: ['projectKey=numeric-application']
+-- specific file level does not works
+fileignoreconfig:
+- filename: Jenkinsfile
+  allowed_patterns: ['projectKey=numeric-application']
