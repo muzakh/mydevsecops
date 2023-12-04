@@ -34,6 +34,21 @@ pipeline {
       }
     }
 
+    stage('SonarQube - SAST'){
+      steps {
+        withSonarQubeEnv('SonarQube') {
+          sh "mvn sonar:sonar \
+                -Dsonar.projectKey=numeric-application \
+                -Dsonar.host.url=http://localhost:9000"
+        }
+        timeout(time: 2, unit: 'MINUTES') {
+          script {
+            waitForQualityGate abortPipeline: true
+          }
+        }
+      }
+    }
+
     stage('Docker Build and Push'){
       steps {
         withDockerRegistry([credentialsId: "docker-hub-access-token-for-local-jenkins", url: ""]){
