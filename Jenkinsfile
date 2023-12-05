@@ -36,9 +36,18 @@ pipeline {
       }
     }
 
-    stage('Code Vulnerability/Depedency Checker - OASP'){
-      steps {
-        sh "mvn dependency-check:check"
+    stage('Vulnerability Scan'){
+      parallel {
+        stage('Code Dependency Check') {
+          steps{
+            sh 'mvn dependency-check:check'
+          }
+        }
+        stage('Trivy Container Scan') {
+          steps{
+            sh 'sh trivy-docker-image-scan.sh'
+          }
+        }
       }
     }
 
