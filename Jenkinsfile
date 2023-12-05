@@ -36,10 +36,11 @@ pipeline {
       }
     }
 
-    stage('Vulnerability Scan - Docker'){
+    stage('Code Vulnerability/Depedency Checker - OASP'){
       steps {
-        sh 'mvn dependency-check:check'
+        sh "mvn depedency-check:check"
       }
+    }
 
     stage('Docker Build and Push'){
       steps {
@@ -60,5 +61,15 @@ pipeline {
 
   }
 
+      post { 
+        always { 
+          junit 'target/surefire-reports/*.xml'
+          jacoco execPattern: 'target/jacoco.exec'
+          pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+          dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+        }
+    }
+
 
 }
+
