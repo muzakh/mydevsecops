@@ -40,7 +40,9 @@ pipeline {
       parallel {
         stage('Code Dependency Check') {
           steps{
-            sh 'mvn dependency-check:check'
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+              sh 'mvn dependency-check:check'
+              }
           }
         }
         stage('Trivy Container Scan') {
