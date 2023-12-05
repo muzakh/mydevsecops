@@ -38,7 +38,7 @@ pipeline {
 
     stage('Code Vulnerability/Depedency Checker - OASP'){
       steps {
-        sh "mvn depedency-check:check"
+        sh "mvn dependency-check:check"
       }
     }
 
