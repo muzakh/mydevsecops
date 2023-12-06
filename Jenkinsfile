@@ -40,6 +40,7 @@ pipeline {
       parallel {
         stage('Code Dependency Check') {
           steps{
+            // catchError block catches the error at stage level, reports it but does not fail overall pipeline and moves further
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
               sh 'mvn dependency-check:check'
               }
