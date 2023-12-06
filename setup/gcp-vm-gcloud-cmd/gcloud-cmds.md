@@ -9,12 +9,12 @@ gcloud compute firewall-rules create allow-all \
 		--action=ALLOW \
 		--rules=all \
 		--source-ranges=0.0.0.0/0 \
-		--target-tags=allow-all	
+		--target-tags=allow-all
 
 #Create a Static IP to use it as a GCE External IP Address
 gcloud compute addresses create static-ip --region=us-central1
 
-#Fetch the Static IP 
+#Fetch the Static IP
 gcloud compute addresses describe static-ip --region=us-central1
 
 #Create GCE Instance
@@ -25,6 +25,6 @@ gcloud compute instances create devsecops-cloud --zone=us-central1-a \
     --address=<add-static-ip-from-previous-step> \
     --network-tier=PREMIUM \
     --boot-disk-size=512GB \
-    --tags=allow-all 
+    --tags=allow-all
 
 gcloud compute ssh dev-cloud
