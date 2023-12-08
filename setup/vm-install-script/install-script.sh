@@ -24,7 +24,7 @@ apt-get install -y kubelet=${KUBE_VERSION}-00 wget vim build-essential jq python
 sudo apt-mark hold kubeadm kubectl kubelet
 pip3 install jc
 
-### UUID of VM 
+### UUID of VM
 ### comment below line if this Script is not executed on Cloud based VMs
 jc dmidecode | jq .[1].values.uuid -r
 

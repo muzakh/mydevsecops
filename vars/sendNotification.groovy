@@ -80,7 +80,7 @@ def call(String buildStatus = 'STARTED') {
               "type": "mrkdwn",
               "text": "*Node Port*\n32564"
             ]
-          ], 
+          ],
           "accessory": [
             "type": "image",
             "image_url": "https://raw.githubusercontent.com/sidd-harth/devsecops-k8s-demo/main/slack-emojis/k8s.png",
@@ -120,7 +120,7 @@ def call(String buildStatus = 'STARTED') {
               "type": "mrkdwn",
               "text": "*GIT Previous Success Commit:*\n${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
             ]
-          ], 
+          ],
           "accessory": [
             "type": "image",
             "image_url": "https://raw.githubusercontent.com/sidd-harth/devsecops-k8s-demo/main/slack-emojis/github.png",

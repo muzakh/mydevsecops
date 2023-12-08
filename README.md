@@ -10,7 +10,7 @@
 `docker run -p 8787:5000 muzakh/node-service:v1`
 
 `curl localhost:8787/plusone/99`
- 
+
 ### NodeJS Microservice - Kubernetes Deployment -
 `kubectl create deploy node-app --image muzakh/node-service:v1`
 
